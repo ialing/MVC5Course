@@ -220,24 +220,24 @@
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Models\Fabrics.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Fabrics.edmx</DependentUpon>
-      <LastGenOutput>Fabrics.Context.cs</LastGenOutput>
-    </Content>
-    <Content Include="Models\Fabrics.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>Fabrics.edmx</DependentUpon>
-      <LastGenOutput>Fabrics.cs</LastGenOutput>
-    </Content>
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <EntityDeploy Include="Models\Fabrics.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Fabrics.Designer.cs</LastGenOutput>
     </EntityDeploy>
+    <Content Include="Models\Fabrics.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Fabrics.edmx</DependentUpon>
+      <LastGenOutput>Fabrics.Context.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\Fabrics.edmx.diagram">
       <DependentUpon>Fabrics.edmx</DependentUpon>
+    </Content>
+    <Content Include="Models\Fabrics.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>Fabrics.edmx</DependentUpon>
+      <LastGenOutput>Fabrics.cs</LastGenOutput>
     </Content>
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
