@@ -42,6 +42,8 @@ namespace MVC5Course.Controllers
         }
 
         // GET: Clients/Create
+        //[ChildActionOnly]只能由子要求存取。
+        [ChildActionOnly]
         public ActionResult Create()
         {
             ViewBag.OccupationId = new SelectList(db.Occupation, "OccupationId", "OccupationName");
