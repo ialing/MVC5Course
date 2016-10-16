@@ -36,9 +36,10 @@ namespace MVC5Course.Controllers
         {
             var product = db.Product.Find(id);
             //有關連資料表時，先刪除
-            db.OrderLine.RemoveRange(product.OrderLine);
+            //db.OrderLine.RemoveRange(product.OrderLine);
 
-            db.Product.Remove(product);
+            //db.Product.Remove(product);
+            product.IsDeleted = true;
             db.SaveChanges();
             return RedirectToAction("Index"); 
         }
@@ -62,7 +63,7 @@ namespace MVC5Course.Controllers
                 {
                     foreach (var vErrors in entityErrors.ValidationErrors)
                     {
-                        throw new Exception("Error:" + vErrors.ErrorMessage.ToString());
+                        throw new Exception(vErrors.PropertyName +" Error:" + vErrors.ErrorMessage.ToString());
                     }
                 }
                 throw;
@@ -83,6 +84,11 @@ namespace MVC5Course.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
  
+        }
+        public ActionResult Edit(int id)
+        {
+            var product = db.Product.FirstOrDefault(p => p.ProductId == id);
+            return View();
         }
     }
 }

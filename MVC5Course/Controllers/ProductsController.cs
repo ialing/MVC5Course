@@ -98,11 +98,13 @@ namespace MVC5Course.Controllers
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             Product product = db.Product.Find(id);
+            
             if (product == null)
             {
                 return HttpNotFound();
             }
             return View(product);
+            
         }
 
         // POST: Products/Delete/5
@@ -111,7 +113,8 @@ namespace MVC5Course.Controllers
         public ActionResult DeleteConfirmed(int id)
         {
             Product product = db.Product.Find(id);
-            db.Product.Remove(product);
+            //db.Product.Remove(product);
+            product.IsDeleted = true; 
             db.SaveChanges();
             return RedirectToAction("Index");
         }
