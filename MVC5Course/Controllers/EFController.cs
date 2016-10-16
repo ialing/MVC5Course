@@ -90,5 +90,10 @@ namespace MVC5Course.Controllers
             var product = db.Product.FirstOrDefault(p => p.ProductId == id);
             return View();
         }
+        public ActionResult ClientContribution()
+        {
+            var data = db.vw_ClientContribution.Take(10);
+            return View(data);
+        }
     }
 }
