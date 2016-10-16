@@ -1,4 +1,5 @@
 ﻿using MVC5Course.Models;
+using MVC5Course.Models.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity.Validation;
@@ -72,16 +73,19 @@ namespace MVC5Course.Controllers
         }
         public ActionResult Add20Percent()
         {
-            var data = db.Product.Where(p => p.ProductName.Contains("White"));
+            //var data = db.Product.Where(p => p.ProductName.Contains("White"));
 
-            foreach (var d in data)
-            {
-                if (d.Price.HasValue)
-                {
-                    d.Price = d.Price.Value * 1.2m;
-                }
-            }
-            db.SaveChanges();
+            //foreach (var d in data)
+            //{
+            //    if (d.Price.HasValue)
+            //    {
+            //        d.Price = d.Price.Value * 1.2m;
+            //    }
+            //}
+            //db.SaveChanges();
+            //--ExecuteSqlCommand--
+            string sWhere = "%white%";
+            db.Database.ExecuteSqlCommand("Update  Product Set price=price*1.2 where ProductName Like @p0 ",sWhere);
             return RedirectToAction("Index");
  
         }
@@ -93,6 +97,21 @@ namespace MVC5Course.Controllers
         public ActionResult ClientContribution()
         {
             var data = db.vw_ClientContribution.Take(10);
+            return View(data);
+        }
+        public ActionResult ClientContribution2(string keyword= "Mary")
+        {
+            var data = db.Database.SqlQuery<ClientContributionViewModel>(@"
+                SELECT
+		                 c.ClientId,
+		                 c.FirstName,
+		                 c.LastName,
+		                 (SELECT SUM(o.OrderTotal) 
+		                  FROM [dbo].[Order] o 
+		                  WHERE o.ClientId = c.ClientId) as OrderTotal
+	                FROM 
+		                [dbo].[Client] as c where c.FirstName like @p0 ","%" +keyword +"%");
+
             return View(data);
         }
     }
