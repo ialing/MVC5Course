@@ -2,12 +2,12 @@
 
 @{
     ViewBag.Title = "Index";
-}
-
+} 
 <h2>Index</h2>
 
 <p>
-    @Html.ActionLink("Create New", "Create")
+    @Html.ActionLink("Create New", "Create") | 
+    @Html.ActionLink("加價20%", "Add20Percent")
 </p>
 <table class="table">
     <tr>
@@ -30,6 +30,7 @@
     <tr>
         <td>
             @Html.DisplayFor(modelItem => item.ProductName)
+            @Html.ActionLink("重點", "Update", new { id = item.ProductId })
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.Price)
