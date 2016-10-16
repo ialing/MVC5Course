@@ -34,6 +34,9 @@ namespace MVC5Course.Controllers
         public ActionResult Delete(int id)
         {
             var product = db.Product.Find(id);
+            //有關連資料表時，先刪除
+            db.OrderLine.RemoveRange(product.OrderLine);
+
             db.Product.Remove(product);
             db.SaveChanges();
             return RedirectToAction("Index"); 
