@@ -9,9 +9,9 @@ using System.Web.Mvc;
 
 namespace MVC5Course.Controllers
 {
-    public class EFController : Controller
+    public class EFController :  Controller
     {
-        FabricsEntities db = new  FabricsEntities();
+        FabricsEntities db = new FabricsEntities();
         // GET: EF
         public ActionResult Index()
         {
