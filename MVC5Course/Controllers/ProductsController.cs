@@ -19,7 +19,8 @@ namespace MVC5Course.Controllers
         {
           
              // db.Product = repo.All()
-            return View(repo.All().OrderByDescending(p=>p.ProductId).Take(10).ToList());
+            //return View(repo.All().OrderByDescending(p=>p.ProductId).Take(10).ToList());
+            return View(repo.Get_排序資料(10));
         }
 
         // GET: Products/Details/5
@@ -117,8 +118,9 @@ namespace MVC5Course.Controllers
         {
             Product product =repo.Find(id);
             //db.Product.Remove(product);
-            product.IsDeleted = true; 
+            //product.IsDeleted = true; 
             //db.SaveChanges();
+            repo.Delete(product);
             repo.UnitOfWork.Commit();
             return RedirectToAction("Index");
         }

@@ -266,9 +266,6 @@
     <Compile Include="Models\RepositoryHelper.cs">
       <DependentUpon>IRepository.EF6.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\RepositoryIQueryableExtensions.cs">
-      <DependentUpon>IRepository.EF6.tt</DependentUpon>
-    </Compile>
     <Compile Include="Models\usp_GetClientContribution_Result.cs">
       <DependentUpon>Fabrics.tt</DependentUpon>
     </Compile>
