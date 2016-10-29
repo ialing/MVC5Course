@@ -278,6 +278,7 @@
     </Compile>
     <Compile Include="Models\ViewModels\ClientContributionViewModel.cs" />
     <Compile Include="Models\ViewModels\ClientLoginViewModel.cs" />
+    <Compile Include="Models\ViewModels\ProductBathUpdatViewModel.cs" />
     <Compile Include="Models\vw_ClientContribution.cs">
       <DependentUpon>Fabrics.tt</DependentUpon>
     </Compile>
@@ -394,10 +395,12 @@
     <Content Include="Views\MB\Index.cshtml" />
     <Content Include="Views\MB\MyForm.cshtml" />
     <Content Include="Views\MB\MyFormResult.cshtml" />
+    <Content Include="Views\MB\ProductList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Views\Base\" />
+    <Folder Include="Views\ProductBatchUpdateView\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
