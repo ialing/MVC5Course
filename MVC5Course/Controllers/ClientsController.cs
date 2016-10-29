@@ -102,16 +102,16 @@ namespace MVC5Course.Controllers
         // 詳細資訊，請參閱 http://go.microsoft.com/fwlink/?LinkId=317598。
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ClientId,FirstName,MiddleName,LastName,Gender,DateOfBirth,CreditRating,XCode,OccupationId,TelephoneNumber,Street1,Street2,City,ZipCode,Longitude,Latitude,Notes")] Client client)
+        public ActionResult Edit(int id,FormCollection form )
         {
-            if (ModelState.IsValid)
+            var c = db.Client.Find(id);
+            if (TryUpdateModel(c, null, null, new string[]{"IsAdmin"}))
             {
-                db.Entry(client).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.OccupationId = new SelectList(db.Occupation, "OccupationId", "OccupationName", client.OccupationId);
-            return View(client);
+            ViewBag.OccupationId = new SelectList(db.Occupation, "OccupationId", "OccupationName", c.OccupationId);
+            return View(c);
         }
 
         // GET: Clients/Delete/5
