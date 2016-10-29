@@ -20,7 +20,7 @@ namespace MVC5Course
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             ViewEngines.Engines.Clear();
-            ViewEngines.Engines.Add(new RazorViewEngine);
+            ViewEngines.Engines.Add(new RazorViewEngine());
         }
     }
 }

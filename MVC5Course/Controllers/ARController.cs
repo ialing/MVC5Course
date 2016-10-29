@@ -13,5 +13,16 @@ namespace MVC5Course.Controllers
         {
             return View();
         }
+        public ActionResult FileTestDownload()
+        {
+            var filePath = Server.MapPath("~/Content/cake.jpg");
+
+            return File(filePath, "image/jpeg","cakedownload.jpg");
+        }
+        public ActionResult FileTest()
+        {
+            var filePath = Server.MapPath("~/Content/cake.jpg");
+            return File(filePath, "image/jpeg");
+        }
     }
 }
