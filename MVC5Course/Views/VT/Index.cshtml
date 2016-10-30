@@ -1,0 +1,42 @@
+﻿@{
+    Layout = "";
+    int[] data = new int[] { 1, 2, 3, 4, 5 };
+}
+@foreach (var item in data)
+{
+    @item
+}
+
+ 
+@foreach (var item in data)
+    {
+ @(item+" ")
+    }
+ 
+
+<ul>
+    @foreach (var item in data)
+    {
+  <li>@item</li>
+    }
+</ul>
+
+
+<text>--------------------------------------------</text> 
+
+@{
+
+    var a = 1;
+}
+@DateTime.Now
+@if (a == 1)
+{
+    <text>123</text>
+    @: 啟用
+}
+ 
+<p></p>
+@{
+    var s="<strong>粗體</strong>";
+}
+@Html.Raw(s)
