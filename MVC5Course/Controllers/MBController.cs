@@ -14,6 +14,8 @@ namespace MVC5Course.Controllers
         // GET: MB
         public ActionResult Index()
         {
+            //原本這行移至ShareDataAttribute
+            //ViewData["Temp1"] = "暫存資料Temp1"; 
             var b = new ClientLoginViewModel()
             {
                 FirstName = "Fname",
@@ -66,6 +68,11 @@ namespace MVC5Course.Controllers
             }
             db.SaveChanges();
             return RedirectToAction("ProductList");
+        }
+        public ActionResult MyError()
+        {
+            throw new InvalidOperationException("Error");
+            return View();
         }
     }
 }
