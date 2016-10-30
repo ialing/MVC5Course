@@ -1,6 +1,7 @@
 ﻿using MVC5Course.Models.ViewModels;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -8,6 +9,7 @@ using System.Web.Mvc;
 namespace MVC5Course.Controllers
 {
     [LocalDebugOnly]
+    [HandleError(ExceptionType = typeof(DbEntityValidationException), View = "Error_DbEntityValidationException")]
     public class MBController : BaseController
     {
         [Share頁面上常用的ViewBag變數資料]
@@ -57,7 +59,8 @@ namespace MVC5Course.Controllers
         {
             //public ActionResult BatchUpdate(ProductBathUpdatViewModel[] items) --> IList<ProductBathUpdatViewModel> items
             //原本 item.PorductId==>items[0].ProductId  , 一定要命名為items
-            if (ModelState.IsValid){
+            //if (ModelState.IsValid)
+            {
                 for (var i=0;i<items.Length ;i++){
                     var prod = db.Product.Find(items[i].ProductId); 
                     prod.ProductName = items[i].ProductName;
@@ -65,14 +68,13 @@ namespace MVC5Course.Controllers
                     prod.Price = items[i].Price;
                     prod.Active = items[i].Active;
                 }
+                db.SaveChanges(); 
             }
-            db.SaveChanges();
             return RedirectToAction("ProductList");
         }
         public ActionResult MyError()
         {
-            throw new InvalidOperationException("Error");
-            return View();
+            throw new InvalidOperationException("Error"); 
         }
     }
 }
