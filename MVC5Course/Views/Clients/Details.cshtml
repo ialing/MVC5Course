@@ -50,7 +50,7 @@
             @Html.DisplayFor(model => model.DateOfBirth)
         </dd>
 
-        <dt>
+        @*<dt>
             @Html.DisplayNameFor(model => model.CreditRating)
         </dt>
 
@@ -136,8 +136,13 @@
 
         <dd>
             @Html.DisplayFor(model => model.Occupation.OccupationName)
-        </dd>
+        </dd>*@
+        @*/Orders/Index?ClientId = 1*@
+        <h3>Html.Action</h3>
+        @Html.Action("Index", "Orders", new { clientId = Model.ClientId})
 
+        <h3>Html.Partial</h3>
+        @Html.Partial("../Orders/Index", Model.Order.ToList())
     </dl>
 </div>
 <p>
