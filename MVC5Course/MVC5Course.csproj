@@ -400,6 +400,7 @@
     <Content Include="Views\MB\ProductList.cshtml" />
     <Content Include="Views\Shared\Error_DbEntityValidationException.cshtml" />
     <Content Include="Views\VT\Index.cshtml" />
+    <Content Include="Views\VT\_Layout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
