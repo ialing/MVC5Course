@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<MVC5Course.Models.Product>
 
 @{
+  
     ViewBag.Title = "Index";
 }
 
@@ -48,10 +49,14 @@
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { id=item.ProductId }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ProductId }) |
+            @Ajax.ActionLink("Details", "Details", new { id = item.ProductId }, new AjaxOptions() {  UpdateTargetId="detail" }) |
             @Html.ActionLink("Delete", "Delete", new { id=item.ProductId })
         </td>
     </tr>
 }
 
 </table>
+<div id="detail"></div>
+@section Scripts{
+    <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+}
