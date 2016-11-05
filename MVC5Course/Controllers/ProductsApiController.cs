@@ -16,11 +16,13 @@ namespace MVC5Course.Controllers
     {
         private FabricsEntities db = new FabricsEntities();
 
+   
         public ProductsApiController()
         {
             db.Configuration.LazyLoadingEnabled = false;
         }
         // GET: api/ProductsApi
+             [Route("prods")]
         public IQueryable<Product> GetProduct()
         {
             return db.Product;
@@ -28,7 +30,9 @@ namespace MVC5Course.Controllers
 
         // GET: api/ProductsApi/5
         [ResponseType(typeof(Product))]
+        [Route("prods/{id}")]
         public IHttpActionResult GetProduct(int id)
+
         {
             Product product = db.Product.Find(id);
             if (product == null)
@@ -38,7 +42,17 @@ namespace MVC5Course.Controllers
 
             return Ok(product);
         }
+        [Route("prods/{id}/orderlines")]
+        public IHttpActionResult GetOrderLines(int id)
+        {
+            Product product = db.Product.Find(id);
+            if (product == null)
+            {
+                return NotFound();
+            }
 
+            return Ok(db.OrderLine.Where(p=>p.ProductId == id));
+        }
         // PUT: api/ProductsApi/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutProduct(int id, Product product)
