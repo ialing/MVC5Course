@@ -66,5 +66,13 @@
 
 <div id="detail"></div>
 @section Scripts{
+    @{
+        ViewBag.msg = @"123
+        456";
+    }
     <script src="~/Scripts/jquery.unobtrusive-ajax.js"></script>
+    <script>
+        var str = '@Ajax.JavaScriptStringEncode(ViewBag.msg)';
+        console.log(str);
+        </script>
 }
